@@ -14,3 +14,5 @@ grid requires in HTML:
   used to absoutely position the preview element
 2. grid__preview element
   used for sizing the preview element
+3. nxt-grid directive element MUST have an id. For example "home-nxt-grid". It's used to identify the elements within the grid
+4. grid items are identified by ids: home-nxt-grid-item-{{index}} as in example. the id is composed of grid id + "-item-{{index}}" string 
