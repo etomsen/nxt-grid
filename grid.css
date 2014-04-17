@@ -1,0 +1,156 @@
+.nxt-grid {
+	text-align: center;
+	overflow: scroll;
+	width: 100%;
+	height: 100vh;
+	margin: auto;
+	position: absolute;
+	top: 0;
+}
+
+.nxt-grid__item {
+	display: inline-block;
+	vertical-align: top;
+	width: 27vw;
+	min-height: 40vw;
+	height: 40vw;
+	padding-left: 1.25vw;
+	padding-right: 1.25vw;
+	padding-bottom: 2vh;
+	padding-top: 2vh;
+	position: relative;
+	/*for testing*/
+	/*border: 1px dashed red;
+	z-index: 999999;*/
+}
+
+
+
+.nxt-grid__item-thumb {
+	width: 100%;
+	height: 36vw;
+	background-repeat: no-repeat;
+	background-size: 100%;
+	position: relative;
+	-webkit-box-shadow: 1px 1px 2px rgba(0,0,0,.4);
+    -moz-box-shadow: 1px 1px 2px rgba(0,0,0,.4);
+    box-shadow: 1px 1px 2px rgba(0,0,0,.4);
+}
+
+.nxt-grid__item-thumb:after {
+    -webkit-box-shadow: 0px 9px 20px rgba(0,0,0,.4);
+    -moz-box-shadow: 0px 9px 20px rgba(0,0,0,.4);
+    box-shadow: 0px 9px 20px rgba(0,0,0,.4);
+
+    position: absolute;
+    width: 70%;
+    height: 10px;
+    content: '';
+    bottom: 0px;
+    left: 15%;
+    text-align: center;
+    background: transparent;
+  }
+
+.nxt-grid__item-thumb.active:after {
+	border: solid transparent;
+	font-size: 0;
+	content: " ";
+	height: 0;
+	width: 0;
+	pointer-events: none;
+	border-bottom-color: #383736;
+	border-width: 3.2vh;
+	position: absolute;
+	bottom: -3.2vh;
+	left: 50%;
+	margin-left: -3.2vh;
+	-webkit-box-shadow: 0 0;
+	box-shadow: 0 0;
+}
+
+.nxt-grid__preview-position {
+	height: 0;
+	width: 100vw;
+	position: relative;
+	top: 15vh;
+}
+
+.nxt-grid__preview {
+	background-color: #383736;
+	height: 0;
+	margin-left: -5.7vw;
+	position: relative;
+	overflow: hidden;
+	z-index: 99999;
+}
+
+.nxt-grid__preview-content {
+	right: 0;
+	left: 5.7vw;
+	top: 10px;
+	bottom: 10px;
+	position: absolute;
+}
+
+@media screen and (max-width: 800px) {
+	.nxt-grid {
+
+	}
+	.nxt-grid__item {
+		width: 216.265px;
+		min-height: 320.39px;
+		height: 320.39px;
+		/**
+		* max-height remains the same as it should be alligned
+		* with the preview height which is always in vh
+		**/
+		padding-bottom: 16.578125px;
+		padding-left: 10px;
+		padding-right: 10px;
+		padding-top: 16.578125px;
+	}
+
+	.nxt-grid__item-thumb.active:after {
+		border-width: 17px;
+		bottom: -17px;
+		margin-left: -17px;
+	}
+
+
+	.nxt-grid__item-thumb {
+		height: 287.23375px;
+	}
+
+
+	.nxt-grid__item.active:after {
+		border-width: 16.578125px;
+		top: -16px;
+	}
+
+}
+
+@media screen and (min-width: 1024px) {
+	.nxt-grid {
+
+	}
+	.nxt-grid__item {
+		width: 277px;
+		min-height: 412px;
+		height: 412px;
+		padding-bottom: 19.109375px;
+		padding-left: 12.78125px;
+		padding-right: 12.78125px;
+		padding-top: 19.109375px;
+	}
+
+	.nxt-grid__item-thumb.active:after {
+		border-width: 20px;
+		bottom: -20px;
+		margin-left: -20px;
+	}
+
+	.nxt-grid__item-thumb {
+		height: 373.78125px;
+	}
+}
