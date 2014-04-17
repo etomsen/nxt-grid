@@ -1,0 +1,55 @@
+<div style="position: relative;" ui-keyup="{37: 'prev()', 39: 'next()'}" tabindex="0">
+	<!-- <div style="background: transparent url(/images/home_background.png) repeat; opacity: 0.6; position: absolute: width: 100%; height: 100vh;"></div> -->
+	<div nxt-noisy-background style="position: absolute: width: 100%; height: 100vh;"></div>
+	<!-- height-rate="0.39375" -->
+	<div nxt-grid id="home-nxt-grid" height-rate="0.3" active-item="model.activeItem" class="nxt-grid" on-viewport-change="gridViewportChanged()" on-animation-finish="onAnimationFinish()">
+		<div style="width: 100%; height: 100%; position: absolute; top: 0; left: 0; background-color: grey; opacity: 0.5; z-index: 99999" ng-show="model.loading">
+			<div class="spinner" style="position: absolute; left: 50%; top: 50%; margin: -15px 0 -15px;"></div>
+		</div>
+		<div id="home-nxt-grid-preview-position" class="nxt-grid__preview-position">
+			<div id="home-nxt-grid-preview" class="nxt-grid__preview" ng-show="model.activeItem && model.activeItem.preview">
+				<span class="nxt-close" ng-click="closePreview()"></span>
+				<div class="nxt-grid__preview-content">
+					<div style="width: 100%; height: 100%; position: relative;">
+						<div class="nxt-arrow-left" style="left: 5vw; top: 50%; position: absolute; z-index: 99999;" ng-click="prev()"></div>
+						<div youtube code="{{model.ytId}}" style="position: absolute; top: 0;  bottom: 0; width: 100%;"></div>
+						<div class="nxt-arrow-right" style="right: 5vw; top: 50%; position: absolute; z-index: 99999;" ng-click="next()"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="home-nxt-grid-item-{{$index}}" ng-repeat="item in model.trailers" class="nxt-grid__item" >
+			<div class="nxt-grid__item-thumb" nxt-lazy-src="http://www.nextrailer.net/thumbnails/{{item.id}}.jpg" ng-class="{'active':item.active === true}" alt="{{item.title}}">
+				<div class="nxt-grid_item__play" ng-click="onItemClick($event, $index)"></div>
+				<div class="nxt-thumb-footer">
+					<div class="nxt-thumb-footer__line nxt-thumb-footer__line--hidden nxt-thumb-footer__rating">
+						<nxt-rating class="nxt-thumb-footer__rating-content" ng-model="item.userRating" change-rating="changeRating($index)"></nxt-rating><div style="float: right; padding-left: 5px;">rate me!</div>
+					</div>
+					<div class="nxt-thumb-footer__title">{{item.title}}</div>
+					<div class="nxt-thumb-footer__line">
+						<!-- here goes the left side -->
+						<div style="float: left; height: 100%; padding-top: 5px; padding-bottom: 5px;">
+							<div class="nxt-thumb-footer__icon rating"></div>
+						</div>
+						<div style="float: left; padding-left: 5px;">
+							<div class="nxt-thumb-footer__text">{{item.rating}}</div>
+						</div>
+						<!-- here goes the right side -->
+						<div style="float: right; height: 100%; padding-top: 5px; padding-bottom: 5px;">
+							<div class="nxt-thumb-footer__icon share"></div>
+						</div>
+						<div style="float: right; height: 100%; padding-top: 5px; padding-bottom: 5px;">
+							<div class="nxt-thumb-footer__icon watchlist" ng-click="addToWatchlist($index, $event)" ng-class="{active: item.inWatchlist}"></div>
+						</div>
+						<div style="float: right; height: 100%; padding-top: 5px; padding-bottom: 5px;">
+							<div class="nxt-thumb-footer__icon seen" ng-click="addToSeen($index, $event)" ng-class="{active: item.inSeen}"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div style="height: 100vh; width: 100%;">
+			<!-- to enable proper scrolling when opening thr last item -->
+		</div>
+	</div>
+</div>
